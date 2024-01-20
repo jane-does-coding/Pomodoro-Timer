@@ -1,10 +1,10 @@
 import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import AuthProviders from "./AuthProviders";
+import Auth from "./Auth";
 
 const Navbar = () => {
-  const session = {};
+  const session = null;
 
   return (
     <nav className="flexBetween navbar">
@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link href={"/create-project"}>Share Work</Link>
           </>
         ) : (
-          <AuthProviders></AuthProviders>
+          <Auth></Auth>
         )}
       </div>
     </nav>
