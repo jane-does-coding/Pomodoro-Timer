@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 const AuthProviders = () => {
   return <div>AuthProviders</div>;

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.18",
+    "@prisma/client": "^5.8.1",
     "@types/jsonwebtoken": "^9.0.5",
     "cloudinary": "^1.41.2",
     "graphql-request": "^6.1.0",
