@@ -7,6 +7,16 @@ import { FaGithub } from "react-icons/fa6";
 const auth = () => {
   const [isSignup, setIsSignup] = useState(true);
 
+  const signup = async () => {
+    try {
+    } catch (error) {}
+  };
+
+  const login = async () => {
+    try {
+    } catch (error) {}
+  };
+
   return (
     <div className="flex h-screen p-0">
       <div className=" flex w-full max-w-[30vw] h-screen">

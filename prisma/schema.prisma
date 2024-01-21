@@ -11,13 +11,36 @@ datasource db {
 }
 
 model User {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  email       String    @unique
-  avatarUrl   String
-  description String?
-  githubUrl   String?
-  linkedinUrl String?
-  projects    Project[] @relation("UserToProject")
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  favoriteIds    String[]  @db.ObjectId
+  githubUrl      String?
+  linkedinUrl    String?
+  projects       Project[] @relation("UserToProject")
+  Account        Account[]
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
 model Project {
@@ -28,6 +51,6 @@ model Project {
   liveSiteUrl String
   githubUrl   String
   category    String
-  createdBy   User   @relation("UserToProject", fields: [userId], references: [id])
+  createdBy   User   @relation("UserToProject", fields: [userId], references: [id], onDelete: Cascade)
   userId      String @db.ObjectId
 }
