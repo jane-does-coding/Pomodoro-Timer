@@ -3,18 +3,36 @@ import Image from "next/image";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const auth = () => {
+  const router = useRouter();
   const [isSignup, setIsSignup] = useState(true);
+  const [data, setData] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const signup = async () => {
-    try {
-    } catch (error) {}
+    axios.post("/api/register", data).catch((error) => {
+      console.log(error);
+    });
   };
 
   const login = async () => {
-    try {
-    } catch (error) {}
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      if (callback?.ok) {
+        alert("yay");
+        router.refresh();
+      }
+    });
   };
 
   return (
@@ -30,7 +48,7 @@ const auth = () => {
         {/* Auth box */}
         <div
           className={`bg-slate-200/20 border-slate-200 p-4  border-[1px] w-fit h-fit rounded-lg  ${
-            isSignup ? "w-[40vw]" : "w-[35vw]"
+            isSignup ? "w-[40vw]" : "min-w-[35vw]"
           } my-auto flex flex-col gap-2`}
         >
           <h1 className="mx-auto my-2 mb-4 text-2xl flex align-center justify-center gap-2">
@@ -40,6 +58,8 @@ const auth = () => {
           <div className="flex flex-col gap-y-4 my-2">
             <input
               type="email"
+              value={data.email}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
               placeholder="email"
               className="p-4 py-2 text-lg rounded-md border-slate-200 border-[1px] focus:border-slate-500 focus:outline-none"
             />
@@ -47,11 +67,17 @@ const auth = () => {
               <div className="flex gap-4">
                 <input
                   type="text"
+                  value={data.name}
+                  onChange={(e) => setData({ ...data, name: e.target.value })}
                   placeholder="name"
                   className="p-4 py-2 w-full text-lg rounded-md border-slate-200 border-[1px] focus:border-slate-500 focus:outline-none"
                 />
                 <input
                   type="username"
+                  value={data.username}
+                  onChange={(e) =>
+                    setData({ ...data, username: e.target.value })
+                  }
                   placeholder="username"
                   className="p-4 py-2 w-full text-lg rounded-md border-slate-200 border-[1px] focus:border-slate-500 focus:outline-none"
                 />
@@ -59,11 +85,16 @@ const auth = () => {
             )}
             <input
               type="password"
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
               placeholder="password"
               className="p-4 py-2 text-lg rounded-md border-slate-200 border-[1px] focus:border-slate-500 focus:outline-none"
             />
           </div>
-          <button className="bg-rose-500 hover:bg-rose-400 transition mt-4 text-white p-4 rounded-full">
+          <button
+            onClick={isSignup ? signup : login}
+            className="bg-rose-500 hover:bg-rose-400 transition mt-4 text-white p-4 rounded-full"
+          >
             {isSignup ? "Signup" : "Login"}
           </button>
           {/* ----- OR ------ */}
