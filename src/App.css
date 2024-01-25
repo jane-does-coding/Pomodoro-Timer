@@ -1,3 +1,12 @@
+:root {
+  --red: #f54e4e;
+  --green: #4aec8c;
+}
+
+* {
+  font-family: sans-serif;
+}
+
 body {
   background-color: #30384b;
   color: #eee;
@@ -8,4 +17,44 @@ main {
   max-width: 340px;
   margin: 0 auto;
   text-align: center;
+}
+
+button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 0;
+  display: inline-block;
+  width: 100px;
+  cursor: pointer;
+}
+
+svg {
+  width: 80px;
+}
+
+.settings {
+  width: auto;
+  background-color: rgb(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin: 0 auto;
+  gap: 0.5rem;
+}
+
+.settings svg {
+  width: 36px;
+  float: left;
+}
+
+label {
+  display: block;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
