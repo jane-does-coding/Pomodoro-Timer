@@ -14,7 +14,7 @@ const Settings = () => {
         thumbClassName="thumb"
         trackClassName="track"
         value={settingsInfo.workMinutes}
-        //  onChange={newValue => settingsInfo}
+        onChange={(newValue) => settingsInfo.setWorkMinutes(newValue)}
         min={1}
         max={120}
       />
