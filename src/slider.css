@@ -1,7 +1,9 @@
 .slider {
-  height: 40px;
+  height: 42px;
+  width: 100%;
   border: 2px solid var(--red);
   border-radius: 20px;
+  padding: 0rem;
 }
 
 .thumb {
@@ -10,6 +12,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
+  box-sizing: content-box;
 }
 
 .green {

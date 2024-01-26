@@ -1,31 +1,45 @@
 :root {
-  --red: #f54e4e;
-  --green: #4aec8c;
+  --red: #ffffff;
+  --green: #000000;
 }
 
 * {
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 body {
   background-color: #30384b;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("/public/wallpaper1.jpg");
+  background-size: cover;
   color: #eee;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
 main {
-  padding-top: 50px;
-  max-width: 340px;
   margin: 0 auto;
   text-align: center;
 }
 
 button {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 999rem;
   color: rgba(255, 255, 255, 0.8);
   border: 0;
   display: inline-block;
-  width: 100px;
   cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  margin: 0 auto;
 }
 
 svg {
@@ -36,7 +50,7 @@ svg {
   width: auto;
   background-color: rgb(255, 255, 255, 0.1);
   border-radius: 10px;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 1rem;
   font-size: 1.25rem;
   cursor: pointer;
   display: flex;
@@ -45,10 +59,13 @@ svg {
   align-self: center;
   margin: 0 auto;
   gap: 0.5rem;
+  position: absolute;
+  left: 5rem;
+  bottom: 2rem;
 }
 
 .settings svg {
-  width: 36px;
+  width: 3rem;
   float: left;
 }
 
@@ -57,4 +74,42 @@ label {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+.settings-box {
+  background-color: rgba(96, 96, 96, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 2rem 3rem;
+  min-width: 25rem;
+  padding-top: 0.5rem;
+  position: inherit;
+  border-radius: 1rem;
+}
+
+.settings-box h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.progressbar {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  padding: 1rem;
+  border-radius: 100%;
+  backdrop-filter: blur(8px);
+}
+
+.time-label {
+  font-size: 4.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.mode-label {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 25%;
+  letter-spacing: 0.5rem;
+  margin: 0;
+  padding: 0;
+  color: #eeeeeeb2;
 }
